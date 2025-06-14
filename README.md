@@ -10,7 +10,7 @@ The CropLeaf Disease Prediction project aims to automate the identification of p
 
 ## Flask Web Application
 
-A Flask-based web application has been developed to make the model accessible to users. The app currently provides a front-end interface for uploading leaf images and displaying results, but it awaits integration with a backend to process predictions using the trained CNN model. Once integrated, the Flask app will allow users to:
+A Flask-based web application has been developed to make the model accessible to users. The app currently allows users to:
 
 
 
@@ -20,11 +20,71 @@ Upload leaf images through a web interface.
 
 
 
-Receive instant predictions about potential crop diseases.
+Receive instant predictions about potential crop diseases with confidence scores.
 
 
 
-View disease classification results, confidence scores, and recommended actions.
+View disease classification results and basic information.
+
+Additionally, a shopping system has been introduced to recommend remedies or medicines for the identified crop diseases. The frontend for the shopping system is complete, featuring a product catalog, cart, and checkout interface. The backend, which will handle product retrieval, order processing, and integration with disease predictions, is still under development. Once fully implemented, the shopping system will enhance the app’s utility by providing actionable treatment options.
+
+## Shopping System for Remedies
+
+The shopping system is designed to recommend and sell remedies (e.g., pesticides, fungicides, or organic treatments) tailored to the predicted crop disease. Key features include:
+
+
+
+
+
+Disease-Specific Recommendations: After a disease is predicted, the app displays relevant products mapped to that disease, along with details like product name, description, price, and application instructions.
+
+
+
+Product Catalog: A browsable list of remedies, filterable by crop or disease, with options to add items to a cart.
+
+
+
+Cart and Checkout: Users can add products to a cart, review their selections, and proceed to a checkout page (currently frontend-only).
+
+
+
+## Benefits:
+
+
+
+
+
+Actionable Solutions: Farmers receive not only disease diagnoses but also immediate access to treatments, streamlining the response process.
+
+
+
+Convenience: A one-stop platform for diagnosis and remedy purchase, reducing the need to consult multiple sources.
+
+
+
+Education: Product descriptions include usage instructions, helping farmers apply treatments correctly.
+
+
+
+Revenue Potential: The shopping system can support agricultural businesses by facilitating direct sales of remedies.
+
+The backend implementation will involve:
+
+
+
+
+
+A database to store product details and map diseases to remedies.
+
+
+
+API endpoints to retrieve products, manage the cart, and process orders.
+
+
+
+Integration with the disease prediction pipeline to recommend products based on the model’s output.
+
+
 
 ## Usefulness in a Web Application
 
