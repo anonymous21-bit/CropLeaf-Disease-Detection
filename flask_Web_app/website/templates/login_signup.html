@@ -1,0 +1,157 @@
+{% extends "layout.html"  %}
+{%  block body  %}
+
+<div class="form">
+    <style>
+      .btn-primary.active {
+        background-color: #fff;
+        color: #3b5d50;
+        border: solid 2px #eff2f1 !important;
+      }
+    </style>
+
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-sm-10 col-md-8 my-4">
+          <ul class="nav nav-pills mb-3 justify-content-center" id="pills-tab" role="tablist">
+            {% if active_tab == 'login' %}
+              <li class="nav-item" role="presentation">
+                <button class="btn btn-primary m-2 active" id="pills-login-tab" data-bs-toggle="pill" data-bs-target="#pills-login" type="button" role="tab" aria-controls="pills-login" aria-selected="true">Login</button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="btn btn-primary m-2" id="pills-signup-tab" data-bs-toggle="pill" data-bs-target="#pills-signup" type="button" role="tab" aria-controls="pills-signup" aria-selected="false">Sign Up</button>
+              </li>
+            {% else %}
+              <li class="nav-item" role="presentation">
+                <button class="btn btn-primary m-2" id="pills-login-tab" data-bs-toggle="pill" data-bs-target="#pills-login" type="button" role="tab" aria-controls="pills-login" aria-selected="false">Login</button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="btn btn-primary m-2 active" id="pills-signup-tab" data-bs-toggle="pill" data-bs-target="#pills-signup" type="button" role="tab" aria-controls="pills-signup" aria-selected="true">Sign Up</button>
+              </li>
+            {% endif %}
+          </ul>
+          
+          <div class="tab-content" id="pills-tabContent">
+            {% if active_tab == 'login' %}
+              <div class="tab-pane fade show active" id="pills-login" role="tabpanel" aria-labelledby="pills-login-tab" tabindex="0">
+            {% else %}
+              <div class="tab-pane fade" id="pills-login" role="tabpanel" aria-labelledby="pills-login-tab" tabindex="0">
+            {% endif %}
+            
+              <h3 class="text-center py-2">Welcome Back!</h3>
+              <div class="container">
+                <form id="login-form" class="row g-3 justify-content-center">
+                  <div class="col-12 col-md-8">
+                    <div class="field-wrap">
+                      <label>Email Address<span class="req">*</span></label>
+                      <input type="email" name="email" class="form-control" placeholder="Enter your Email id" required />
+                    </div>
+                  </div>
+                  <div class="col-12 col-md-8">
+                    <div class="field-wrap">
+                      <label>Password<span class="req">*</span></label>
+                      <input type="password" name="password" class="form-control" placeholder="Enter your password" required />
+                    </div>
+                  </div>
+                  <div class="col-12 col-md-8">
+                    <p class="forgot text-right">
+                      <a href="#">Forgot Password?</a>
+                    </p>
+                  </div>
+                  <div class="col-12 col-md-8 text-center mt-0">
+                    <button type="button" class="btn btn-primary" id="login-submit">Login</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+
+            {% if active_tab == 'signup' %}
+            <div class="tab-pane fade show active" id="pills-signup" role="tabpanel" aria-labelledby="pills-signup-tab" tabindex="0">
+            {% else %}
+            <div class="tab-pane fade" id="pills-signup" role="tabpanel" aria-labelledby="pills-signup-tab" tabindex="0">
+            {% endif %}
+              <h3 class="text-center py-2">Sign Up for Free</h3>
+              <div class="container">
+                <form id="signup-form" class="row g-3">
+                  <div class="col-12 col-md-6">
+                    <input type="text" name="first_name" class="form-control" placeholder="Enter your First Name" required />
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <input type="text" name="last_name" class="form-control" placeholder="Enter your Last Name" required />
+                  </div>
+                  <div class="col-12">
+                    <input type="email" name="email" class="form-control" placeholder="Enter your Email id" required />
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <input type="password" name="password" class="form-control" placeholder="Enter new password" required />
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <input type="password" name="confirm_password" class="form-control" placeholder="Enter confirm password" required />
+                  </div>
+                  <div class="col-12 text-center">
+                    <button type="button" class="btn btn-primary" id="signup-submit">Get Started</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="col-12 col-sm-10 col-md-6" id="response-message"></div>
+      </div>
+    </div>
+
+    <div class="py-5"></div>
+    <div class="py-2"></div>
+  </div>
+
+  <script>
+    $(document).ready(function () {
+      $('#login-submit').on('click', function () {
+        // Check if required fields are filled in
+        if ($('#login-form')[0].checkValidity()) {
+          var formData = $('#login-form').serialize();
+          $.ajax({
+            url: "{{ url_for('views.user_login') }}",
+            type: 'POST',
+            data: formData,
+            dataType: 'json',
+            success: function (response) {
+              $('#response-message').html('<div class="alert alert-success">' + response.success + '</div>')
+              window.location.href = "{{ url_for('views.home') }}";
+            },
+            error: function (response) {
+              $('#response-message').html('<div class="alert alert-danger">' + response.responseJSON.error + '</div>')
+            }
+          });
+        } else {
+          // Handle case where required fields are not filled in
+          $('#response-message').html('<div class="alert alert-danger">Please fill in all required fields.</div>');
+        }
+      });
+    
+      $('#signup-submit').on('click', function () {
+        // Check if required fields are filled in
+        if ($('#signup-form')[0].checkValidity()) {
+          var formData = $('#signup-form').serialize();
+          $.ajax({
+            url: "{{ url_for('views.user_signup') }}",
+            type: 'POST',
+            data: formData,
+            dataType: 'json',
+            success: function (response) {
+              $('#response-message').html('<div class="alert alert-success">' + response.success + '</div>')
+            },
+            error: function (response) {
+              $('#response-message').html('<div class="alert alert-danger">' + response.responseJSON.error + '</div>')
+            }
+          });
+        } else {
+          // Handle case where required fields are not filled in
+          $('#response-message').html('<div class="alert alert-danger">Please fill in all required fields.</div>');
+        }
+      });
+    });
+    
+</script>
+{%  endblock  %}

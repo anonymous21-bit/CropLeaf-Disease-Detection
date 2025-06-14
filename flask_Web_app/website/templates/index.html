@@ -1,0 +1,206 @@
+{% extends "layout.html"  %}
+{%  block body  %}
+		<!-- End Header/Navigation -->
+
+<!-- Start Hero Section -->
+<div class="hero">
+    <div class="container">
+      <div class="row justify-content-between">
+        <div class="container py-5">
+          <!-- For demo purpose -->
+          <header class="text-white text-center">
+            <h1 class="display-4">Upload your image</h1>
+            <p class="lead mb-0">This will process your crop image and tell you the exact disease your crop is having</p>
+            <p class="mb-5 font-weight-light">We are using Deep Learning with CNN</p>
+          </header>
+
+          <form action="" id="crop_img" method="post" enctype="multipart/form-data">
+            <div class="row py-4">
+              <div class="col-lg-6 mx-auto">
+                <!-- Uploaded image area -->
+                <p class="font-italic text-white text-center">The image uploaded will be rendered inside the box below.</p>
+                <div class="image-area mt-4">
+                  <img id="imageResult" src="https://bootstrapious.com/i/snippets/sn-img-upload/image.svg" alt="" width="150" class="mb-4" />
+                  <!-- <img id="imageResult" src="{{ url_for('static', filename='images') }}" alt="" class="img-fluid rounded shadow-sm mx-auto d-block" /> -->
+                </div>
+
+                <br />
+
+                <!-- Upload image input -->
+                <div class="input-group mb-3 px-2 py-2 rounded-pill bg-white shadow-sm">
+                  <input id="upload" type="file" name="image" onchange="readURL(this);" class="form-control border-0" />
+                  <label id="upload-label" for="upload" class="font-weight-light text-muted">Choose file</label>
+                  <div class="input-group-append">
+                    <label for="upload" class="btn btn-light m-0 rounded-pill px-4"><i class="fa fa-cloud-upload mr-2 text-muted"></i><small class="text-uppercase font-weight-bold text-muted">Choose file</small></label>
+                  </div>
+                </div>
+
+                <div class="input-group-append">
+                  <button class="btn btn-dark m-0 rounded-pill text-uppercase font-weight-bold w-100" type="submit">Submit</button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+		<!-- End Hero Section -->
+
+		<!-- Start Product Section -->
+		<div class="product-section">
+			<div class="container">
+				<div class="row">
+
+					<!-- Start Column 1 -->
+					<div class="col-md-12 col-lg-3 mb-5 mb-lg-0">
+						<h2 class="mb-4 section-title">Ensure farmers save resources and prevent economic loss.</h2>
+						<p class="mb-4">Leveraging machine learning or deep learning techniques can expedite the detection process, leading to a significant reduction in crop damage. We are using CNN based framework for Cropleaf disease detection. This research achieved an accuracy of around 98%. </p>
+						<p><a href="/shop" class="btn">Explore</a></p>
+					</div> 
+					<!-- End Column 1 -->
+
+					<!-- Start Column 2 -->
+					<div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
+						<a class="product-item" href="/cart">
+							<img src="{{url_for('static', filename= 'images/product-1.png') }}" class="img-fluid product-thumbnail">
+							<h3 class="product-title">KZEB M-45 FUNGICIDE</h3>
+							<strong class="product-price">₹540</strong>
+
+							<span class="icon-cross">
+								<img src="{{url_for('static', filename= 'images/cross.svg') }}" class="img-fluid">
+							</span>
+						</a>
+					</div> 
+					<!-- End Column 2 -->
+
+					<!-- Start Column 3 -->
+					<div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
+						<a class="product-item" href="/cart">
+							<img src="{{url_for('static', filename= 'images/product-2.png') }}" class="img-fluid product-thumbnail">
+							<h3 class="product-title">Dithane M-45 80WP</h3>
+							<strong class="product-price">₹ 280.00</strong>
+
+							<span class="icon-cross">
+								<img src="{{url_for('static', filename= 'images/cross.svg') }}" class="img-fluid">
+							</span>
+						</a>
+					</div>
+					<!-- End Column 3 -->
+
+					<!-- Start Column 4 -->
+					<div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
+						<a class="product-item" href="/cart">
+							<img src="{{url_for('static', filename= 'images/product-3.png') }}" class="img-fluid product-thumbnail">
+							<h3 class="product-title">Curzate MB</h3>
+							<strong class="product-price">₹ 340.00</strong>
+
+							<span class="icon-cross">
+								<img src="{{url_for('static', filename= 'images/cross.svg') }}" class="img-fluid">
+							</span>
+						</a>
+					</div>
+					<!-- End Column 4 -->
+
+				</div>
+			</div>
+		</div>
+		<!-- End Product Section -->
+
+		<!-- Start Why Choose Us Section -->
+		<div class="why-choose-section">
+			<div class="container">
+				<div class="row justify-content-between">
+					<div class="col-lg-6">
+						<h2 class="section-title">Why Choose Us</h2>
+						<p>Goal is to aid farmers in identifying plant diseases by looking at photos of the affected plants' leaves. Identifying plant diseases at an early stage and thus, it can assist farmers in conserving resources and avoiding economic loss. We also suggest some Fungicides and insecticides to help cure those diseases at an early stage. </p>
+
+						<div class="row my-5">
+							<div class="col-6 col-md-6">
+								<div class="feature">
+									<div class="icon">
+										<img src="{{url_for('static', filename= 'images/truck.svg') }}" alt="Image" class="imf-fluid">
+									</div>
+									<h3>Fast &amp; Free Shipping</h3>
+									<p>Experience the ultimate convenience with our fast and free shipping! Get your orders delivered to your doorstep within 1-3 business days at no extra cost. Shop now and feel the difference!</p>
+								</div>
+							</div>
+
+							<div class="col-6 col-md-6">
+								<div class="feature">
+									<div class="icon">
+										<img src="{{url_for('static', filename= 'images/bag.svg') }}" alt="Image" class="imf-fluid">
+									</div>
+									<h3>Easy to Shop</h3>
+									<p>Discover the joy of hassle-free shopping with Intuitive design, streamlined categories, and smart search functions make finding what you need a breeze. Shop effortlessly and find everything you love with ease!</p>
+								</div>
+							</div>
+
+							<div class="col-6 col-md-6">
+								<div class="feature">
+									<div class="icon">
+										<img src="{{url_for('static', filename= 'images/support.svg') }}" alt="Image" class="imf-fluid">
+									</div>
+									<h3>24/7 Support</h3>
+									<p>Get peace of mind with our 24/7 support! Whether you have a question or need assistance, our dedicated team is always available to help, day or night.</p>
+								</div>
+							</div>
+
+							<div class="col-6 col-md-6">
+								<div class="feature">
+									<div class="icon">
+										<img src="{{url_for('static', filename= 'images/return.svg') }}" alt="Image" class="imf-fluid">
+									</div>
+									<h3>Hassle Free Returns</h3>
+									<p>Returning an item is a breeze. Enjoy a simple, no-questions-asked process, with easy steps and quick refunds. We make sure your shopping experience is smooth and worry-free from start to finish. </p>
+								</div>
+							</div>
+
+						</div>
+					</div>
+
+					<div class="col-lg-5">
+						<div class="img-wrap">
+							<img src="{{url_for('static', filename= 'images/why-choose-us-img.jpg') }}" alt="Image" class="img-fluid">
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+		<!-- End Why Choose Us Section -->
+
+		<!-- Start We Help Section -->
+		<div class="we-help-section">
+			<div class="container">
+				<div class="row justify-content-between">
+					<div class="col-lg-7 mb-5 mb-lg-0">
+						<div class="imgs-grid">
+							<div class="grid grid-1"><img src="{{url_for('static', filename= 'images/img-grid-1.jpg') }}" alt="Untree.co"></div>
+							<div class="grid grid-2"><img src="{{url_for('static', filename= 'images/img-grid-2.jpg') }}" alt="Untree.co"></div>
+							<div class="grid grid-3"><img src="{{url_for('static', filename= 'images/img-grid-3.jpg') }}" alt="Untree.co"></div>
+						</div>
+					</div>
+					<div class="col-lg-5 ps-lg-5">
+						<h2 class="section-title mb-4"><strong>We Help You . . .</strong></h2>
+						<p>Revolutionize farming with our app that detects crop diseases using advanced deep learning technology. Ensure healthier crops and higher yields with instant, accurate diagnoses right at your fingertips.</p>
+
+						<ul class="list-unstyled custom-list my-4">
+							<li><strong>Accurate Disease Detection:</strong> Instantly identify crop dise- ases with precision using state-of-the-art deep learning algorithms.</li>
+							<li><strong>Early Intervention:</strong> Get timely alerts to take action before diseases spread, safeguarding your crops and yields.</li>
+							<li><strong>Data-Driven Insights:</strong> Access comprehensive reports and analytics to make informed decisions and optimize your farming practices.</li>
+							<li><strong>24/7 Support:</strong> Rely on round-the-clock assistance to help you tackle any challenges and make the most of our app's features.</li>
+						</ul>
+						<p><a herf="#" class="btn">Explore</a></p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- End We Help Section -->
+
+		
+
+		
+
+		
+{%  endblock  %}	
