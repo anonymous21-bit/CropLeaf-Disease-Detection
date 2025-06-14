@@ -90,7 +90,7 @@ The model is a Sequential CNN built using TensorFlow/Keras, designed to avoid ov
 
 
 
-Convolutional Layers:
+### Convolutional Layers:
 
 
 
@@ -108,7 +108,7 @@ Padding is set to 'same' for the first Conv2D layer in each block.
 
 
 
-Dropout Layers:
+### Dropout Layers:
 
 
 
@@ -122,7 +122,7 @@ Dropout Layers:
 
 
 
-Fully Connected Layers:
+### Fully Connected Layers:
 
 
 
@@ -136,8 +136,10 @@ Output layer with 38 units (softmax activation) for multi-class classification.
 
 
 
-Optimizer: Adam with a learning rate of 0.0001.
+### Optimizer: 
+Adam with a learning rate of 0.0001.
 
 
 
-Loss Function: Categorical Crossentropy.
+### Loss Function: 
+Categorical Crossentropy.
