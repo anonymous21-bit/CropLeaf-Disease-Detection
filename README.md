@@ -2,7 +2,7 @@
 
 ## Overview
 
-This project implements a deep learning model using TensorFlow to classify plant leaf diseases from images. The model is designed to identify 38 different classes of crop diseases, leveraging a convolutional neural network (CNN) architecture for image classification. A Flask web application has been developed to provide a user interface for this model, though it is not yet integrated with a backend for full functionality.
+This project implements a deep learning model using TensorFlow to classify plant leaf diseases from images. The model is designed to identify 38 different classes of crop diseases, leveraging a convolutional neural network (CNN) architecture for image classification. A Flask web application has been developed to provide a user interface for uploading images, displaying disease predictions, and recommending remedies through a shopping system, though the shopping system’s backend is still under development.
 
 ## Project Description
 
